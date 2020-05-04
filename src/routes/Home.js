@@ -1,6 +1,6 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import { actionCreators } from "../store";
+import { add } from "../store";
 import ToDo from "../components/ToDo";
 
 function Home({ toDos, addToDo }) {
@@ -21,7 +21,7 @@ function Home({ toDos, addToDo }) {
         <button>Add</button>
       </form>
       <ul>
-        {toDos.map(toDo => (
+        {toDos.map((toDo) => (
           <ToDo {...toDo} key={toDo.id} />
         ))}
       </ul>
@@ -34,9 +34,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const addToDo = text => dispatch(actionCreators.addToDo(text));
+  const addToDo = (text) => dispatch(add(text));
   return {
-    addToDo
+    addToDo,
   };
 }
 
